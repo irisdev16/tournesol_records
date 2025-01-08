@@ -1,0 +1,24 @@
+{% extends "public/base.html.twig" %}
+
+
+{% block title %}Recherche pour {{ search }} | Tournesol Records{% endblock %}
+
+{% block body %}
+
+    <main>
+
+        {% if tracks | length == 0 %}
+            <p>Pas de résultats pour cette recherche</p>
+        {% endif %}
+
+        {% for track in tracks %}
+
+            <article>
+                <p>{{ track.title }}</p>
+                <p>{{ track.description }}</p>
+
+            </article>
+        {% endfor %}
+    </main>
+
+{% endblock %}

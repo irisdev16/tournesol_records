@@ -1,0 +1,64 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+
+    <div class="container mt-5">
+        <h1 style="text-align: center; margin-bottom: 5%">Liste de toutes les tracks</h1>
+
+        <div class="d-flex justify-content-center">
+            <table class="table table-bordered text-center">
+                <tr>
+                    <th style="border: 1px solid black; padding: 8px;">Actions</th>
+                    <th style="border: 1px solid black; padding: 8px;">Track id</th>
+                    <th style="border: 1px solid black; padding: 8px;">Nom de la track</th>
+                    <th style="border: 1px solid black; padding: 8px;">Description</th>
+                    <th style="border: 1px solid black; padding: 8px;">Image</th>
+                    <th style="border: 1px solid black; padding: 8px;">Style</th>
+                    <th style="border: 1px solid black; padding: 8px;">Artist</th>
+                    <th style="border: 1px solid black; padding: 8px;">Date de release</th>
+                    <th style="border: 1px solid black; padding: 8px;">Date de création</th>
+                    <th style="border: 1px solid black; padding: 8px;">Date de mise à jour</th>
+
+
+
+
+
+                </tr>
+
+                {% for track in tracks %}
+                    <tr>
+                        <td style="border: 1px solid black; padding: 8px;">
+                            <a href="{{ path('admin_show_track', {'id': track.id}) }}" class="btn btn-primary" style="margin-bottom: 10px" >Voir la track</a>
+                            <a href="{{ path('admin_delete_track', {'id': track.id}) }}" class="btn btn-danger" style="margin-bottom: 10px"  >Supprimer</a>
+                            <a href="{{ path('admin_update_track', {'id': track.id}) }}" class="btn btn-warning" >Modifier</a>
+                        </td>
+
+                        <td style="border: 1px solid black; padding: 8px;">{{ track.id }}</td>
+                        <td style="border: 1px solid black; padding: 8px;">{{ track.title }}</td>
+                        <td style="border: 1px solid black; padding: 8px;">{{ track.description }}</td>
+                        <td style="border: 1px solid black; padding: 8px;">
+                            <img width="100px" alt="pochette track" src="{{ asset('assets/uploads/' ~ track.image) }}" />
+                        </td>
+                        <td style="border: 1px solid black; padding: 8px;">
+                            {% if track.style is not empty %}
+                                {% for style in track.style %}
+                                    {{ style.name }}
+                                {% endfor %}
+                            {% else %}
+                                Aucun style
+                            {% endif %}
+                        </td>
+                        <td style="border: 1px solid black; padding: 8px;"> {{ track.artiste.alias }}</td>
+                        <td style="border: 1px solid black; padding: 8px;">{{ track.releasedAt | date('d-m-Y')}}</td>
+                        <td style="border: 1px solid black; padding: 8px;">{{ track.createdAt | date('d-m-Y')}}</td>
+                        <td style="border: 1px solid black; padding: 8px;">{{ track.updatedAt | date('d-m-Y')}}</td>
+
+
+
+
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock body %}

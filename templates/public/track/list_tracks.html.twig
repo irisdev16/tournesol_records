@@ -1,0 +1,74 @@
+{% extends "public/base.html.twig" %}
+
+
+{% block title %}Accueil | Les artistes {% endblock %}
+
+{% block body %}
+
+    <main>
+
+        {# FORMULAIRE : BARRE DE RECHERCHES #}
+
+
+        <form class="form-search" method="get" action="{{ path('search_tracks') }}">
+
+            <label>
+                <input required class="search-input" type="text" name="search" >
+            </label>
+
+            <input class="search-button" type="submit" value="Rechercher une track">
+        </form>
+
+
+        {# BOUCLE POUR AFFICHER LISTE DE TRACKS #}
+
+
+        <section class="track-container">
+            {% for track in tracks %}
+                <article class="all-tracks">
+                    <div>
+                        <div class="flex-img-title-text">
+                            <img width="200px" height="200px" src="{{ asset('assets/uploads/' ~ track.image) }}" />
+                           <div class="title-text">
+                               <h3>{{ track.title }}</h3><br>
+                               <p>{{ track.description }}</p>
+                           </div>
+
+                        </div>
+
+
+
+
+                        <a href="{{ path('show_track', {id: track.id}) }}">Voir plus</a>
+
+
+                        <p>Écouter sur :
+                            {% if track.spotifyLink is not empty %}
+                                <a href="{{ track.spotifyLink }}" target="_blank">
+                                    <img width="50px" src="{{ asset('assets/images/spotify_picto.png') }}">
+                                </a>
+                            {% endif %}
+
+                            {% if track.appleMusicLink is not empty %}
+                                <a href="{{ track.appleMusicLink }}" target="_blank">
+                                    <img width="65px" src="{{ asset('assets/images/appleMusic_picto.png') }}">
+                                </a>
+                            {% endif %}
+
+                            {% if track.appleMusicLink is not empty %}
+                                <a href="{{ track.youtubeLink }}" target="_blank">
+                                    <img width="50px" src="{{ asset('assets/images/youtube_picto.png') }}">
+                                </a>
+                            {% endif %}
+                        </p>
+                    </div>
+                </article>
+            {% endfor %}
+
+
+        </section>
+
+
+    </main>
+
+{% endblock %}

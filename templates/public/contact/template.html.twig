@@ -1,0 +1,21 @@
+{% block main %}
+
+    <section class="container my-5">
+
+        <table>
+            <tr>
+
+                <td><p>Email : {{ contact.email|nl2br }}</p></td>
+            </tr>
+            <tr>
+                <td><p>Objet : {{ contact.objet|nl2br }}</p></td>
+            </tr>
+            <tr>
+                <td>{{ contact.message|nl2br }}</td>
+            </tr>
+        </table>
+
+    </section>
+
+
+{% endblock main %}

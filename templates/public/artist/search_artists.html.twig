@@ -1,0 +1,25 @@
+{% extends "public/base.html.twig" %}
+
+
+{% block title %}Recherche pour {{ search }} | Tournesol Records{% endblock %}
+
+{% block body %}
+
+    <main>
+
+        {% if artists | length == 0 %}
+            <p>Pas de résultats pour cette recherche</p>
+        {% endif %}
+
+        {% for artist in artists %}
+
+            <article>
+                <p>{{ artist.alias }}</p>
+
+                <img width="100px" src="{{ asset('assets/uploads/' ~ artist.image) }}" />
+                <a href="{{ path('show_artist', {id: artist.id}) }}">Voir l'artiste </a>
+            </article>
+        {% endfor %}
+    </main>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "public/base.html.twig" %}
+
+
+{% block title %}Accueil | Les artistes {% endblock %}
+
+{% block body %}
+
+    <main>
+
+        {# FORMULAIRE : BARRE DE RECHERCHES #}
+
+        <form class="form-search" method="get" action="{{ path('search_artists') }}">
+
+            <label>
+                <input required class="search-input" type="text" name="search" >
+            </label>
+
+            <input class="search-button" type="submit" value="Rechercher un artiste">
+        </form>
+
+        {# BOUCLE POUR AFFICHER LISTE D'ARTISTES #}
+
+        {% for artist in artists %}
+
+            <article class="all-artiste">
+                <div>
+                    <h3>{{ artist.alias }}</h3><br>
+                    <p>{{ artist.description }}</p>
+                    <a href="{{ path('show_artist', {id: artist.id}) }}">Voir plus</a>
+                </div>
+
+
+                <img width="500px" src="{{ asset('assets/uploads/' ~ artist.image) }}" />
+
+            </article>
+        {% endfor %}
+    </main>
+
+{% endblock %}

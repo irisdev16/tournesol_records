@@ -1,0 +1,34 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 style="text-align: center; margin-bottom: 5%">Liste de tous les users</h1>
+
+        <div class="d-flex justify-content-center">
+            <table>
+                <tr>
+                    <th style="border: 1px solid black; padding: 8px;">ID</th>
+                    <th style="border: 1px solid black; padding: 8px;">Email</th>
+                    <th style="border: 1px solid black; padding: 8px;">Role</th>
+                    <th style="border: 1px solid black; padding: 8px;">Actions</th>
+
+                </tr>
+
+
+                {% for admin in admins %}
+                    <tr>
+
+
+                        <td style="border: 1px solid black; padding: 8px;">{{ admin.id }}</td>
+                        <td style="border: 1px solid black; padding: 8px;">{{ admin.email }}</td>
+                        <td style="border: 1px solid black; padding: 8px;">{{ admin.roles|join(', ')}}</td>
+                        <td style="border: 1px solid black; padding: 8px;">
+                            <a href="{{ path('admin_delete_user', {'id': admin.id}) }}" class="btn btn-danger" style="margin-bottom: 10px">Supprimer</a>
+                            <a href="{{ path('admin_update_user', {'id': admin.id}) }}" class="btn btn-warning" style="margin-bottom: 10px">Modifier</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock body %}

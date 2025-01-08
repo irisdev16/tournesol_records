@@ -1,0 +1,95 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+
+
+
+    <div class="container mt-5 d-flex justify-content-center">
+        <div class="form-container p-4 shadow-sm rounded" style="max-width: 600px; width: 100%;">
+
+            <h2 style="text-align: center">Modification d'une track</h2>
+
+            {{ form_start(adminTrackFormView) }}
+
+            <div class="mb-3">
+                {{ form_label(adminTrackFormView.title, null, {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(adminTrackFormView.title, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(adminTrackFormView.title) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(adminTrackFormView.description, null, {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(adminTrackFormView.description, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(adminTrackFormView.description) }}
+            </div>
+
+            <div class="mb-3">
+                <p>Image actuelle </p>
+                <img width="100px" src="{{ asset('assets/uploads/' ~ track.image) }}" />
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(adminTrackFormView.image, null, {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(adminTrackFormView.image, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(adminTrackFormView.image) }}
+            </div>
+
+            <div class="mb-3">
+                {% if track.style is not empty %}
+                    {% for style in track.style %}
+                        <div class="mb-3">
+                            <p>Style actuel :</p>
+                            <p>{{ style.name }}</p>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="mb-3">
+                        <p>Aucun style associé</p>
+                    </div>
+                {% endif %}
+            </div>
+
+            {{ form_label(adminTrackFormView.style, null, {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(adminTrackFormView.style, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(adminTrackFormView.style) }}
+
+            <div class="mb-3">
+                {{ form_label(adminTrackFormView.artiste, null, {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(adminTrackFormView.artiste, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(adminTrackFormView.artiste) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(adminTrackFormView.releasedAt, null, {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(adminTrackFormView.releasedAt, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(adminTrackFormView.releasedAt) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(adminTrackFormView.spotifyLink, null, {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(adminTrackFormView.spotifyLink, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(adminTrackFormView.spotifyLink) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(adminTrackFormView.appleMusicLink, null, {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(adminTrackFormView.appleMusicLink, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(adminTrackFormView.appleMusicLink) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(adminTrackFormView.youtubeLink, null, {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(adminTrackFormView.youtubeLink, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(adminTrackFormView.youtubeLink) }}
+            </div>
+
+
+            <div class="d-flex justify-content-center">
+                {{ form_widget(adminTrackFormView.Valider, {'attr': {'class': 'btn btn-primary'}}) }}
+            </div>
+
+            {{ form_end(adminTrackFormView) }}
+
+        </div>
+    </div>
+{% endblock body %}

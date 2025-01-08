@@ -1,0 +1,33 @@
+{% extends 'admin/base.html.twig' %}
+
+
+
+{% block body %}
+
+    <section class="container my-5">
+        <div class="d-flex justify-content-center">
+            <div class="row align-items-center w-75">
+                <!-- Colonne de l'image -->
+                <div class="col-md-4 text-center">
+                    <img class="img-fluid" alt="image artiste" src="{{ asset('assets/uploads/' ~ artist.image) }}" />
+                </div>
+                <!-- Colonne des informations -->
+                <div class="col-md-8">
+                    <p><strong>artist_id :</strong> {{ artist.id }}</p>
+                    <p><strong>Alias :</strong> {{ artist.alias }}</p>
+                    <p><strong>Prénom de l'artiste :</strong> {{ artist.firstname }}</p>
+                    <p><strong>Nom de l'artiste :</strong> {{ artist.name }}</p>
+                    <p><strong>Email :</strong> {{ artist.email }}</p>
+                    <p><strong>Adresse :</strong> {{ artist.address }}</p>
+                    <p><strong>Date de création :</strong> {{ artist.createdAt | date('d-m-Y') }}</p>
+                    <p><strong>Date de modification :</strong> {{ artist.updatedAt | date('d-m-Y') }}</p>
+                    <p><strong>Description :</strong> {{ artist.description }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+{% endblock body %}

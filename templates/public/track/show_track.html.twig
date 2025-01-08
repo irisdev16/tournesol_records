@@ -1,0 +1,24 @@
+{% extends "public/base.html.twig" %}
+
+{% block title %}{{ track.title }} | Tournesol Records{% endblock %}
+
+{% block body %}
+
+    <main>
+
+        {# TITRE + TEXTE #}
+        <article class="show-track">
+            <div>
+                <h3>{{ track.title }}</h3><br>
+                <h4 id="alias-sous-titre"> {{ track.artiste.alias }}</h4>
+                <p>{{ track.description }}</p>
+                {% if track.artiste %}
+                    <p id="alias"><strong>Découvrez l'artiste --></strong> <a href="{{ path('show_artist', {id: track.artiste.id}) }}">{{ track.artiste.alias }}</a></p>
+                {% else %}
+                    <p>Artiste inconnu</p>
+                {% endif %}
+            </div>
+        </article>
+
+    </main>
+{% endblock %}
