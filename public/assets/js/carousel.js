@@ -1,36 +1,39 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const trackCarousel = document.getElementById('trackCarousel');
-    const prevButton = document.getElementById('prevButton');
-    const nextButton = document.getElementById('nextButton');
-    const items = document.querySelectorAll('.carousel-item');
+    document.addEventListener('DOMContentLoaded', function () {
+    const track = document.querySelector('.carouselTrack');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
 
-    if (items.length === 0) {
-        console.error('Aucun élément avec la classe .carousel-item trouvé');
-        return; // Sortir si aucun élément n'est trouvé
+    if (!track || !prevButton ||  !nextButton) {
+        console.error("Un ou plusieurs éléments sont introuvables.");
+        return;
     }
-
 
     let currentIndex = 0;
-    const itemsPerPage = 3; // Nombre d'éléments visibles
+    const totalItems = track.children.length; // Nombre total d'éléments dans le carrousel
+    const visibleItems = 1; // Nombre d'éléments visibles à la fois
+    const itemWidth = 100 / visibleItems; // Largeur d'un élément
 
-    // Fonction pour mettre à jour la position du carrousel
-    function updateCarouselPosition() {
-        const offset = -currentIndex * 33.33; // Décalage en fonction du nombre d'éléments visibles
-        trackCarousel.style.transform = `translateX(${offset}%)`;
+    // Ajuste la largeur de la track pour s'assurer que le carrousel peut contenir tous les éléments
+    track.style.width = `${totalItems * itemWidth}%`;
+
+    // Fonction pour mettre à jour le déplacement du carrousel en fonction de l'index actuel
+    function updateCarousel() {
+        track.style.transform = `translateX(-${(currentIndex * itemWidth)}%)`;
     }
 
-    prevButton.addEventListener('click', () => {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateCarouselPosition();
+    // Gestion du clic sur le bouton "Suivant"
+    nextButton.addEventListener('click', () => {
+        if (currentIndex < totalItems - visibleItems) {
+            currentIndex += visibleItems;
+            updateCarousel();
         }
     });
 
-    nextButton.addEventListener('click', () => {
-        //console.log("Next button clicked");
-        if (currentIndex < items.length - itemsPerPage) {
-            currentIndex++;
-            updateCarouselPosition();
+    // Gestion du clic sur le bouton "Précédent"
+    prevButton.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex -= visibleItems;
+            updateCarousel();
         }
     });
 });

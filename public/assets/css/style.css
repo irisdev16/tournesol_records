@@ -5,6 +5,10 @@
     font-family: "Roboto Mono", monospace;
 }
 
+img{
+    width: 100%;
+}
+
 
 a{
     text-decoration: none;
@@ -174,72 +178,66 @@ main h2{
 
 /*Aperçu des tracks*/
 
-.carousel-container {
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
     width: 100%;
-    max-width: 1300px;
-    margin: 0 auto;
     overflow: hidden;
-    margin-bottom: 5%;
-}
 
-.trackCarousel {
+}
+.carouselTrack {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    transition: transform 0.3s ease;
-    width: 114%;
-    background-color: red;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+
+
 }
 
-.carousel-item {
-    display: inline-block;
-    width: 32%;
+.carouselItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 auto;
+    width: 30%;
+    padding: 0 10px;
     box-sizing: border-box;
-    padding: 65px;
-    text-align: justify;
+    text-align: center;
     background-color: #fea756;
-    border: 5px #534e35 solid;
+    margin: 2%;
 }
 
-.carousel-item img {
-    width: 100%;
-    height: auto;
-    margin-top: 25%;
+
+.cover {
+
+    width: 30%;
+    height: 100px;
+    margin-bottom: 5%;
+    background-color: green;
 }
 
-.carousel-item h3 {
-    margin-top: 20px;
-    font-size: 18px;
-    color: #534e35;
+.text{
+    margin-top: 10%;
 }
-
-.carousel-item p {
-    font-size: 14px;
-    color: #534e35;
-    margin-top: 35px;
-    margin-right: 10px;
-}
-
-.carousel-control {
+.carousel button.prev, .carousel button.next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: #B0413E;
-    color: #534e35;
+    background: #555555;
+    color: white;
     border: none;
-    border-radius: 10px;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 20px;
+    padding: 0.5em;
+    z-index: 10;
 }
-
-.prev {
-    left: 10px;
+.carousel button.prev:hover, .carousel button.next:hover {
+    background: #090909;
 }
-
-.next {
-    right: 10px;
+.carousel button.prev {
+    left: 0;
+}
+.carousel button.next {
+    right: 0;
 }
 
 
@@ -258,14 +256,19 @@ main h2{
     position: relative;
 }
 
-.all-artiste div{
+.artist-text{
     background-color:#fea756 ;
     height: auto;
-    width: 50%;
+    width:50%;
     padding: 25px;
     left: 35%;
     top: 8%;
     position: absolute;
+
+}
+.artist-img{
+    width: 50%;
+
 }
 
 .all-artiste div p{
@@ -300,7 +303,7 @@ h3{
 
 }
 
-.show-artiste div{
+.show-artist-text{
     background-color:#fea756 ;
     height: auto;
     width: 55%;
@@ -308,6 +311,10 @@ h3{
     left: 35%;
     top: 8%;
     position: absolute;
+}
+
+.show-artist-img{
+    width: 50%;
 }
 
 .show-artiste div p {
@@ -369,7 +376,7 @@ a img {
     height: auto;
 }
 .flex-img-title-text img{
-    margin-top: 5%;
+    margin-top: 10%;
     vertical-align: middle;
 }
 .title-text{
@@ -396,6 +403,10 @@ a img {
 
 .all-tracks p {
     margin-bottom: 3%;
+}
+.img-logo{
+    width: 50px;
+
 }
 
 /*PAGE SHOW TRACKS*/

@@ -23,14 +23,16 @@
         {% for artist in artists %}
 
             <article class="all-artiste">
-                <div>
+                <div class="artist-text">
                     <h3>{{ artist.alias }}</h3><br>
                     <p>{{ artist.description }}</p>
                     <a href="{{ path('show_artist', {id: artist.id}) }}">Voir plus</a>
                 </div>
 
+                <div class="artist-img">
+                    <img src="{{ asset('assets/uploads/' ~ artist.image) }}" />
+                </div>
 
-                <img width="500px" src="{{ asset('assets/uploads/' ~ artist.image) }}" />
 
             </article>
         {% endfor %}
