@@ -36,37 +36,42 @@ class AdminUserController extends AbstractController
             'admins' => $admins,
         ]);
     }
+
+    //je crée une route associée a ma foncton, elle définit une URL spécifique a cette fonction
     #[Route('/admin/users/create', name: 'admin_create_user', methods: ['GET', 'POST'])]
-    public function createUser(Request $request, EntityManagerInterface
-                                       $entityManager, UserPasswordHasherInterface $userPasswordHasher) {
+    //je créé la fonction de création d'utilisateur avec en paramètre la class Request, EntityManager, UserpasswordHasherInterface
+    public function createUser(Request $request,
+                               EntityManagerInterface $entityManager,
+                               UserPasswordHasherInterface $userPasswordHasher) {
 
-        //dd('hello');
-
-
+        //je créé un instance de la classe User
         $user = new User();
 
+        //j'utilise la méthode "createForm" pour récupérer un formulaire créér en terminal de commande avec la commande "make:form"
         $userForm = $this->createForm(UsersType::class, $user);
-
-        //dd($userForm);
-
+        //j'utilise la méthode handleRequest pour récupérer la requête HTTP  de mon formulaire
         $userForm->handleRequest($request);
 
+        //si le fomulaire est soumis et valide
         if ($userForm->isSubmitted() && $userForm->isValid()) {
 
+            //je récupère le mdp entré lors de la création d'utilisateur
             $password = $userForm->get('password')->getData();
 
+            //je hash le mdp grâce a la class UserPasswordInterface et a la méthode "hashPassword"
             $hashedPassword = $userPasswordHasher->hashPassword($user, $password);
 
+            //je récupère le mdp hashé pour l'envoyer en BDD
             $user->setPassword($hashedPassword);
 
+            //je pré-sauvegarde et exécute la création de l'user en BDD
             $entityManager->persist($user);
             $entityManager->flush();
 
             $this->addFlash('success', 'User créé !!');
-
-            //return $this->redirectToRoute('admin_create_user');
         }
 
+        //je créé une vue pour ce formulaire afin que celle ci soit lu dans mon fichier twig
         $userFormView = $userForm->createView();
 
         return $this->render('admin/user/create_user.html.twig', [

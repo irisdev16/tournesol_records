@@ -92,12 +92,20 @@ class AdminArtistController extends AbstractController
         ]);
     }
 
+    //ma classe AdminArtistController hérite de AbstractController, class symfony
+    //je créé un route associé a la méthode, l'url qui s'affichera dans le navigateur
     #[Route('admin/artist/{id}/delete', 'admin_delete_artist', requirements: ['id' => '\d+'] , methods: ['GET'])]
+    //je créé la fonction de suppression d'artiste avec en paramètre l'id de l'artiste, le repository, et l'entity Manager
     public function deleteArtist(int $id, ArtisteRepository $artisteRepository, EntityManagerInterface $entityManager){
 
+
+
+        // j'interroge le repository, donc la BDD pour récupérer l'artiste avec l'id qui lui ai associé
         $artist = $artisteRepository->find($id);
 
+        //j'utilise l'entity Manager pour supprimer l'artiste (remove)
         $entityManager->remove($artist);
+        //j'envoie ça en BDD
         $entityManager->flush();
 
         $this->addFlash('success', "L'artiste a bien été supprimé");

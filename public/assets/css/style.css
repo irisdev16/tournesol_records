@@ -176,72 +176,6 @@ main h2{
     margin-left: 10%;
 }
 
-/*Aperçu des tracks*/
-
-.carousel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-
-}
-.carouselTrack {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    will-change: transform;
-
-
-}
-
-.carouselItem {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 0 0 auto;
-    width: 30%;
-    padding: 0 10px;
-    box-sizing: border-box;
-    text-align: center;
-    background-color: #fea756;
-    margin: 2%;
-}
-
-
-.cover {
-
-    width: 30%;
-    height: 100px;
-    margin-bottom: 5%;
-    background-color: green;
-}
-
-.text{
-    margin-top: 10%;
-}
-.carousel button.prev, .carousel button.next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #555555;
-    color: white;
-    border: none;
-    padding: 0.5em;
-    z-index: 10;
-}
-.carousel button.prev:hover, .carousel button.next:hover {
-    background: #090909;
-}
-.carousel button.prev {
-    left: 0;
-}
-.carousel button.next {
-    right: 0;
-}
-
-
-
 
 /*PAGE TOUS LES ARTISTES*/
 
@@ -496,6 +430,205 @@ a img {
         margin-left: 20px;
     }
 
+
+
+
+/*----------MEDIA QUERY--------------*/
+
+/*ORDINATEUR*/
+
+@media (min-width: 1024px) {
+    #hamb {
+        display: none;
+    }
+}
+
+/*MOBILE*/
+
+/*Media Query Page Accueil*/
+
+@media screen and (max-width:576px){
+
+    /*NAVBAR et menu Hamburger*/
+
+    nav{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 15px;
+        width: 100%;
+        background-color: #fea756;
+        position: relative;
+    }
+    .logo{
+        width: auto;
+        height: auto;
+        border-radius: 50%;;
+    }
+
+    #hamb{
+        padding:0;
+        width:50px;
+        list-style: none;
+    }
+
+    #hamb li{
+        height:3px;
+        margin:15px 0;
+        background-color: black;
+    }
+
+
+    #navbar{
+        display: none;
+        position: absolute;
+        bottom:-30vh;
+        right:10vw;
+    }
+
+    #img{
+        display: none;
+    }
+
+    #img.active{
+        display: flex;
+        flex-direction: column;
+        height: 10vh;
+    }
+
+    #navbar.active{
+        display: flex;
+        flex-direction: column;
+        height: 30vh;
+        width: 100%;
+    }
+
+    /*INTRODUCTION*/
+
+    .section80{
+        width: 80%;
+        margin: auto;
+    }
+
+    .titreH1{
+        text-align: center;
+        color: #fea756 ;
+        font-size: 80px;
+        margin-top: 5%;
+    }
+
+    .intro{
+        text-align: justify;
+        margin-top: 5%;
+        margin-bottom: 10%;
+    }
+
+
+    /*APERÇU DES ARTISTES*/
+
+    /*Image + Paragraphe*/
+    /*1er ARTISTE*/
+
+    .aperçu-artiste{
+        margin-bottom: 5%;
+
+    }
+
+    .flex{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: relative;
+        margin-top: 5%;
+    }
+    .text-container {
+        position: absolute;
+        top: 2%;
+        left: 40%;
+        width: 60%;
+        background-color: #fea756;
+        padding: 10px;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .imgArtiste{
+        width: auto;
+        max-width: 400px;
+
+    }
+
+    .pArtiste{
+        font-size: 10px;
+        text-align: justify;
+    }
+    /*2ème ARTISTE*/
+
+    .flex2{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: relative;
+        margin-top: 5%;
+    }
+
+    .text-container-reverse{
+
+        width: 60%;  /* You can adjust the width based on your design */
+        position: absolute;
+        top: 15%;
+        left: 3%;
+        height: auto;
+        z-index: 2;
+    }
+
+    .pArtiste2 {
+        background-color: #fea756;
+        text-align: justify;
+        padding: 15px;
+        font-size: 10px;
+        margin: 0;
+        border-radius: 10px;
+
+    }
+
+    .imgArtiste2{
+        z-index: 0;
+        margin-left: 10%;
+        width:auto;
+        max-width: 400px;
+        height: auto;
+        max-height: 350px;
+    }
+
+    /*APERÇU DES RELEASES*/
+
+    .text-muted{
+        font-size: 10px;
+    }
+
+    /*FOOTER*/
+
+    /* Cacher tous les éléments sauf le logo */
+    .navbarFooter li:not(.logoItem) {
+        display: none;  /* Cache tous les autres li sauf celui du logo */
+    }
+
+    /* Centrer le logo */
+    .logoItem {
+        text-align: center;  /* Centre le logo */
+        width: 10%;  /* Occupe toute la largeur de l'écran */
+    }
+
+    .logo {
+        width: auto;
+        max-width: 100%;  /* Assure que le logo ne dépasse pas la largeur de l'écran */
+        margin: 0 auto;  /* Centrer le logo */
+        display: block;
+    }
+
+
+}
 
 
 
