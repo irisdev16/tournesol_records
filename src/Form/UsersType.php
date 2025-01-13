@@ -24,7 +24,6 @@ class UsersType extends AbstractType
                 'choices' => [
                     'Admin' => 'ROLE_ADMIN',
                     'User' => 'ROLE_USER',
-                    'Manager' => 'ROLE_MANAGER',
                 ],
 
                 'expanded' => true, // Pour afficher comme des cases à cocher

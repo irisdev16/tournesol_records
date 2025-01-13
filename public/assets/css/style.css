@@ -207,12 +207,11 @@ main h2{
 
 .all-artiste div p{
     text-align: justify;
+    margin-bottom: 6%;
 }
 
 .all-artiste div a{
-    position: absolute;
-    left: 40%;
-    bottom: 4%;
+
     text-decoration: none;
     background-color: darkred;
     color: white;
@@ -279,19 +278,6 @@ a img {
     vertical-align: middle; /* Aligne les images avec le texte ou autres éléments */
 }
 
-/* Responsivité pour les petites tailles d'écran
-@media (max-width: 768px) {
-    .show-tracks {
-        width: calc(50% - 20px);  /* Sur les écrans moyens, 2 éléments par ligne
-    }
-}
-
-@media (max-width: 480px) {
-    .show-tracks {
-        width: 100%;              /* Sur les très petits écrans, 1 élément par ligne
-    }
-
-*/
 
 
 /*PAGE TOUTES LES TRACKS*/
@@ -330,6 +316,10 @@ a img {
     margin-bottom: 20px;
 }
 
+.listen-on{
+    margin-top: 5%;
+}
+
 .all-tracks h3{
     font-size: 30px;
     width: 500px;
@@ -337,6 +327,7 @@ a img {
 
 .all-tracks p {
     margin-bottom: 3%;
+    margin-left: 5%;
 }
 .img-logo{
     width: 50px;
@@ -449,6 +440,27 @@ a img {
 
 @media screen and (max-width:576px){
 
+    /*BARRE DE RECHERCHE*/
+
+    .form-search{
+        margin-top: 4%;
+        margin-right: 3%;
+        text-align: right;
+    }
+
+    .search-input{
+        width: 300px;
+        height: 30px;
+    }
+
+    .search-button{
+        background-color:#fea756;
+        border: none;
+        padding: 5px;
+        border-radius: 10px
+
+    }
+
     /*NAVBAR et menu Hamburger*/
 
     nav{
@@ -459,11 +471,7 @@ a img {
         width: 100%;
         background-color: #fea756;
         position: relative;
-    }
-    .logo{
-        width: auto;
-        height: auto;
-        border-radius: 50%;;
+        overflow: visible;
     }
 
     #hamb{
@@ -478,7 +486,6 @@ a img {
         background-color: black;
     }
 
-
     #navbar{
         display: none;
         position: absolute;
@@ -488,12 +495,6 @@ a img {
 
     #img{
         display: none;
-    }
-
-    #img.active{
-        display: flex;
-        flex-direction: column;
-        height: 10vh;
     }
 
     #navbar.active{
@@ -574,7 +575,7 @@ a img {
 
     .text-container-reverse{
 
-        width: 60%;  /* You can adjust the width based on your design */
+        width: 60%;
         position: absolute;
         top: 15%;
         left: 3%;
@@ -607,6 +608,208 @@ a img {
         font-size: 10px;
     }
 
+    /*PAGE TOUTES LES TRACKS*/
+
+
+    .track-container{
+        display: flex;
+        flex-wrap: wrap;
+
+
+        margin-top: 5%;
+    }
+    .flex-img-title-text{
+        display: block;
+        width: auto;
+        height: auto;
+        margin-top: -25%;
+
+    }
+
+    .all-tracks{
+        background-color: #fea756;
+        width: 65%;
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 35px;
+
+    }
+
+    .all-tracks h3{
+        font-size: 20px;
+        width: 100%;
+        margin-top: 10%;
+    }
+
+    .all-tracks p {
+        margin-bottom: 15%;
+        font-size: 10px;
+        width: 100%;
+        margin-left: 0%;
+
+    }
+
+    .listen-on{
+        margin-top: 15%;
+    }
+
+    .flex{
+        margin-left: 6%;
+
+    }
+
+    .img-logo{
+        width: 50px;
+        margin: 5%;
+        margin-top: -5%;
+
+    }
+
+
+    /*PAGE SHOW TRACKS*/
+
+    .show-track{
+        width: 70%;
+        height: auto;
+        margin: auto;
+        padding: 15px;
+        text-align: justify;
+        background-color:#fea756 ;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+    #alias-sous-titre{
+        text-align: center;
+        margin-bottom: 5%;
+    }
+
+    .show-track div h3{
+        font-size: 30px;
+    }
+
+    #alias{
+        margin-top: 5% ;
+
+    }
+
+    #alias a{
+        background-color:  #534e35;
+        color: #fea756 ;
+        padding: 8px;
+        border-radius: 20px;
+
+    }
+
+    /*PAGE TOUS LES ARTISTES*/
+
+    .all-artiste{
+        width: 90%;
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 5%;
+        margin-top: 25%;
+        margin-left: 8%;
+        flex-direction: row-reverse;
+        position: relative;
+    }
+
+    .artist-text{
+        background-color:#fea756 ;
+        height: auto;
+        width:60%;
+        padding: 25px;
+        left: 35%;
+        top: 8%;
+        position: absolute;
+
+    }
+    .artist-img{
+        width: 40%;
+
+
+    }
+
+    .all-artiste div p{
+        text-align: justify;
+        font-size: 8px;
+    }
+
+    .all-artiste div a{
+        text-decoration: none;
+        background-color: darkred;
+        color: white;
+        border-radius: 20px;
+        padding: 10px;
+        font-size: 10px;
+    }
+
+    /*PAGE SHOW ARTISTE*/
+
+    h3{
+        text-align: center;
+    }
+
+    .show-artiste {
+        width: 80%;
+        margin-left: 2%;
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 15%;
+        margin-top: 5%;
+        flex-direction: row-reverse;
+        position: relative;
+
+    }
+
+    .show-artist-text{
+        background-color:#fea756 ;
+        height: auto;
+        width: 85%;
+        padding: 15px;
+        left: 35%;
+        top: 8%;
+        font-size: 10px;
+        position: absolute;
+
+    }
+
+    .show-artist-img{
+        width: 40%;
+    }
+
+    .show-artiste div p {
+        text-align: justify;
+    }
+
+    #releaseSize{
+        font-size: 13px;
+    }
+
+    .show-tracks{
+        background-color: #fea756;
+        width: calc(35% - 30px);
+        height: auto;
+        margin-bottom: 5%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .article-container{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    a img {
+        vertical-align: middle; /* Aligne les images avec le texte ou autres éléments */
+    }
+
+
+
+
     /*FOOTER*/
 
     /* Cacher tous les éléments sauf le logo */
@@ -628,7 +831,13 @@ a img {
     }
 
 
+
+
+
+
 }
+
+
 
 
 

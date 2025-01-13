@@ -40,7 +40,7 @@ class PublicContactType extends AbstractType
                 'attr' => ['class' => 'form-control'],
                 'label_attr' => ['class' => 'form-label'],
             ])
-            ->add('Valider', SubmitType::class)
+            ->add('Envoyer', SubmitType::class)
         ;
     }
 

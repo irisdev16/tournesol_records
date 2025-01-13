@@ -49,8 +49,7 @@ class AdminArtistController extends AbstractController
                 // je génère le chemin vers le dossier uploads (dans le dossier public)
                 $uploadsDir = $rootDir . '/public/assets/uploads';
 
-                // je déplace mon image dans le dossier uploads, en lui donnant
-                // le nom unique
+                // je déplace mon image dans le dossier uploads, en lui donnant le nom unique
                 $artistImage->move($uploadsDir, $imageNewFilename);
 
                 // je stocke dans l'entité le nouveau nom de l'image
@@ -93,8 +92,9 @@ class AdminArtistController extends AbstractController
     }
 
     //ma classe AdminArtistController hérite de AbstractController, class symfony
-    //je créé un route associé a la méthode, l'url qui s'affichera dans le navigateur
-    #[Route('admin/artist/{id}/delete', 'admin_delete_artist', requirements: ['id' => '\d+'] , methods: ['GET'])]
+    //je créé une route associée a la méthode ci dessous,c'est cette url qui s'affichera dans le navigateur
+    //requirements est écrit sous forme d'expression régulière : id spécifique qui doit être un chiffre
+    #[Route('admin/artist/{id}/delete', 'admin_delete_artist', requirements: ['id' => '\d+'])]
     //je créé la fonction de suppression d'artiste avec en paramètre l'id de l'artiste, le repository, et l'entity Manager
     public function deleteArtist(int $id, ArtisteRepository $artisteRepository, EntityManagerInterface $entityManager){
 
@@ -108,8 +108,10 @@ class AdminArtistController extends AbstractController
         //j'envoie ça en BDD
         $entityManager->flush();
 
+        //j'utilise la méthode addFlash issu de la classe AbstractController pour afficher un message de validation
         $this->addFlash('success', "L'artiste a bien été supprimé");
 
+        //méthode redirectTotRoute également issu d'AbstractController pour rediriger vers la liste d'artistes
         return $this->redirectToRoute('admin_list_artists');
     }
 
