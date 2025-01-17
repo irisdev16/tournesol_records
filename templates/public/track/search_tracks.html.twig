@@ -13,9 +13,12 @@
 
         {% for track in tracks %}
 
-            <article>
-                <p>{{ track.title }}</p>
-                <p>{{ track.description }}</p>
+            <article class="search-track">
+                <p class="titre-track">{{ track.title }}</p>
+                <div class="img-track">
+                    <img src="{{ asset('assets/uploads/' ~ track.image) }}"/>
+                </div>
+                <p class="text-track">{{ track.description }}</p>
 
             </article>
         {% endfor %}
