@@ -7,6 +7,19 @@
 
     <main>
 
+
+        {# FORMULAIRE : BARRE DE RECHERCHES #}
+
+
+        <form class="form-search" method="get" action="{{ path('search_tracks') }}">
+
+            <label>
+                <input required class="search-input" type="text" name="search" >
+            </label>
+
+            <input class="search-button" type="submit" value="Rechercher une track">
+        </form>
+
         {% if tracks | length == 0 %}
             <p>Pas de résultats pour cette recherche</p>
         {% endif %}
@@ -19,6 +32,34 @@
                     <img src="{{ asset('assets/uploads/' ~ track.image) }}"/>
                 </div>
                 <p class="text-track">{{ track.description }}</p>
+
+                <p class="listen-on" >Écouter sur :
+                <div class="flex">
+                    {% if track.spotifyLink is not empty %}
+                        <div class="img-logo">
+                            <a href="{{ track.spotifyLink }}" target="_blank">
+                                <img width="50px" src="{{ asset('assets/images/spotify_picto.png') }}">
+                            </a>
+                        </div>
+                    {% endif %}
+
+                    {% if track.appleMusicLink is not empty %}
+                        <div class="img-logo">
+                            <a href="{{ track.appleMusicLink }}" target="_blank">
+                                <img width="65px" src="{{ asset('assets/images/appleMusic_picto.png') }}">
+                            </a>
+                        </div>
+                    {% endif %}
+
+                    {% if track.appleMusicLink is not empty %}
+                        <div class="img-logo">
+                            <a href="{{ track.youtubeLink }}" target="_blank">
+                                <img width="50px" src="{{ asset('assets/images/youtube_picto.png') }}">
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+                </p>
 
             </article>
         {% endfor %}
