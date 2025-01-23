@@ -288,6 +288,7 @@ h3{
     margin-bottom: 5%;
     padding: 10px;
     box-sizing: border-box;
+
 }
 
 .article-container{
@@ -512,9 +513,7 @@ a img {
         list-style: none;
         cursor: pointer;
         z-index: 10; /*Pour que le menu hamburger soit au dessus et cliquable*/
-
     }
-
     #hamb li{
         height:3px;
         margin:15px 0;
@@ -538,10 +537,9 @@ a img {
     #img{
         display: none;
     }
-
     #navbar.active{
         display: flex;
-        right: 0; /* Le menu glisse vers la gauche (0) pour apparaître à l'écran */
+        right: 0;
         margin:5px 0;
     }
 

@@ -21,14 +21,22 @@ class AdminStyleController extends AbstractController
 
         $style = new Style();
 
+        //dd($style);
+
         $adminStyleForm = $this->createForm(AdminStyleType::class, $style);
 
         $adminStyleForm->handleRequest($request);
 
         if($adminStyleForm->isSubmitted() && $adminStyleForm->isValid()){
 
+            //dd($adminStyleForm->getData());
+
             $entityManager->persist($style);
             $entityManager->flush();
+
+                //---------------REQUÊTE SQL GÉNÉRÉE--------------
+            //INSERT INTO style (name, created_at, updated_at)
+            //VALUES ('nom du style', 'date de création', 'date de modification')
 
             $this->addFlash('success', 'Style bien créé');
 
@@ -47,6 +55,13 @@ class AdminStyleController extends AbstractController
 
         $styles = $styleRepository->findAll();
 
+        //dd($styles);
+
+            //---------------REQUÊTE SQL GÉNÉRÉE--------------
+
+        //SELECT *
+        //FROM style
+
         return $this->render('admin/style/list_styles.html.twig', [
             'styles' => $styles,
         ]);
@@ -56,6 +71,13 @@ class AdminStyleController extends AbstractController
     public function showStyle(int $id, StyleRepository $styleRepository){
 
         $style = $styleRepository->find($id);
+
+        //dd($style);
+
+            //---------------REQUÊTE SQL GÉNÉRÉE--------------
+        //SELECT *
+        //FROM style
+        //WHERE id = 3
 
         return $this->render('admin/style/show_style.html.twig', [
             'style' => $style,
@@ -67,9 +89,14 @@ class AdminStyleController extends AbstractController
 
         $style = $styleRepository->find($id);
 
+        //dd($style);
+
         $entityManager->remove($style);
         $entityManager->flush();
 
+            //---------------REQUÊTE SQL GÉNÉRÉE--------------
+        //DELETE FROM style
+        //WHERE id = 4
         $this->addFlash('success', "Le style a bien été supprimé");
 
         return $this->redirectToRoute('admin_list_styles');
@@ -81,15 +108,24 @@ class AdminStyleController extends AbstractController
 
         $style = $styleRepository->find($id);
 
+        //dd($style);
+
         $adminStyleForm = $this->createForm(AdminStyleType::class, $style);
 
         $adminStyleForm->handleRequest($request);
 
         if($adminStyleForm->isSubmitted() && $adminStyleForm->isValid()){
 
+            //dd($adminStyleForm->getData());
+
             $style->setUpdatedAt(new \DateTimeImmutable('now'));
             $entityManager->persist($style);
             $entityManager->flush();
+
+                //---------------REQUÊTE SQL GÉNÉRÉE--------------
+            //UPDATE style
+            //SET created_at = 'nouvelle date de création'
+            //WHERE id = 8
 
             $this->addFlash('success', 'Style modifié');
         }

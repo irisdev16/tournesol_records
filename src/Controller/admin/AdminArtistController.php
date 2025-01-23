@@ -21,11 +21,15 @@ class AdminArtistController extends AbstractController
 
         $artist = new Artiste();
 
+        //dd($artist);
+
         $adminArtistForm = $this ->createForm(AdminArtistType::class, $artist);
 
         $adminArtistForm->handleRequest($request);
 
         if($adminArtistForm->isSubmitted() && $adminArtistForm->isValid()){
+
+            //dd($adminArtistForm->getData());
 
             $artistImage = $adminArtistForm->get('image')->getData();
 
@@ -43,6 +47,10 @@ class AdminArtistController extends AbstractController
 
                 $imageNewFilename = $uniqueFilenameGenerator->generateUniqueFilename($imageOriginalName, $imageExtension);
 
+
+                //dd($imageNewFilename);
+
+
                 // je récupère grâce à la classe ParameterBag, le chemin vers la racine du projet
                 $rootDir = $parameterBag->get('kernel.project_dir');
 
@@ -54,10 +62,17 @@ class AdminArtistController extends AbstractController
 
                 // je stocke dans l'entité le nouveau nom de l'image
                 $artist->setImage($imageNewFilename);
+
+                //dd($artist);
             }
 
             $entityManager->persist($artist);
             $entityManager->flush();
+
+                //---------------REQUÊTE SQL GÉNÉRÉE--------------
+            //INSERT INTO artiste (alias, description, image, create_at, updated_at, Name, firstname, email, address)
+            //VALUES ('alias de l'artiste', 'description de l'artiste', 'nom_unique_de_l_image', ETC ...)
+
 
             $this->addFlash('success', 'Artiste bien créé');
 
@@ -76,6 +91,14 @@ class AdminArtistController extends AbstractController
 
         $artists = $artistRepository->findAll();
 
+        //dd($artists);
+
+            //---------------REQUÊTE SQL GÉNÉRÉE--------------
+        //SELECT *
+        //FROM artiste
+
+
+
         return $this->render('admin/artist/list_artists.html.twig', [
             'artists' => $artists,
         ]);
@@ -85,6 +108,14 @@ class AdminArtistController extends AbstractController
     public function showArtist(int $id, ArtisteRepository $artistRepository){
 
         $artist = $artistRepository->find($id);
+
+        //dd($artist);
+
+            //---------------REQUÊTE SQL GÉNÉRÉE--------------
+        //SELECT *
+        //FROM artiste
+        //WHERE id = id passé dans l'URL
+
 
         return $this->render('admin/artist/show_artist.html.twig', [
             'artist' => $artist,
@@ -100,13 +131,21 @@ class AdminArtistController extends AbstractController
 
 
 
-        // j'interroge le repository, donc la BDD pour récupérer l'artiste avec l'id qui lui ai associé
+        // j'interroge le repository (issu de Doctrine), donc la BDD pour récupérer l'artiste avec l'id qui lui ai
+        // associé
         $artist = $artisteRepository->find($id);
 
-        //j'utilise l'entity Manager pour supprimer l'artiste (remove)
+        //dd($artist);
+
+        //j'utilise l'entity Manager issu de la bilbiothèque Doctrine pour supprimer l'artiste (remove)
         $entityManager->remove($artist);
-        //j'envoie ça en BDD
+        //j'exécute le remove et j'en envoie ça en BDD
         $entityManager->flush();
+
+            //---------------REQUÊTE SQL GÉNÉRÉE--------------
+        //DELETE FROM artiste
+        //WHERE id = 1 (par exemple, id = id passé dans l'URL)
+
 
         //j'utilise la méthode addFlash issu de la classe AbstractController pour afficher un message de validation
         $this->addFlash('success', "L'artiste a bien été supprimé");
@@ -122,11 +161,15 @@ class AdminArtistController extends AbstractController
 
         $artist = $artisteRepository->find($id);
 
+        //dd($artist);
+
         $adminArtistForm = $this ->createForm(AdminArtistType::class, $artist);
 
         $adminArtistForm->handleRequest($request);
 
         if($adminArtistForm->isSubmitted() && $adminArtistForm->isValid()){
+
+            //dd($adminArtistForm->getData());
 
             $artistImage = $adminArtistForm->get('image')->getData();
 
@@ -137,16 +180,26 @@ class AdminArtistController extends AbstractController
 
                 $imageNewFilename = $uniqueFilenameGenerator->generateUniqueFilename($imageOriginalName, $imageExtension);
 
+                //dd($imageNewFilename);
+
+
                 $rootDir = $parameterBag->get('kernel.project_dir');
                 $uploadsDir = $rootDir . '/public/assets/uploads';
                 $artistImage->move($uploadsDir, $imageNewFilename);
 
                 $artist->setImage($imageNewFilename);
                 $artist->setUpdatedAt(new \DateTimeImmutable('now'));
+
+                //dd($artist);
             }
 
             $entityManager->persist($artist);
             $entityManager->flush();
+
+                //---------------REQUÊTE SQL GÉNÉRÉE--------------
+            //UPDATE artiste
+            //SET name = 'nouveau nom', alias = 'nouvel alias', ETC ETC
+            //WHERE id = 1 (par exemple, id = id passé dans l'URL)
 
             $this->addFlash('success', 'Artiste modifié');
         }

@@ -28,32 +28,36 @@
                     <h4>{{ track.title }} </h4><br>
                     <p id="releaseSize"><em>{{ track.releasedAt |date('d-m-Y')}}</em></p>
                     <div class="show-artist-img">
-                        <img width="500px"  src="{{ asset('assets/uploads/' ~ track.image) }}" />
+                        <img width="500px" src="{{ asset('assets/uploads/' ~ track.image) }}" />
+                    </div>
+                    <div style="margin-top: 10%; margin-bottom: 10%">
+                        <a href="{{ path('show_track', {id: track.id}) }}" style="background-color: darkred;border-radius: 15px;color: white; padding: 3%">Voir plus</a>
                     </div>
 
 
+
                     <p>Écouter sur :
-                    <div class="flex">
+                        <div class="flex">
                             {% if track.spotifyLink is not empty %}
-                        <div class="img-logo">
-                            <a href="{{ track.spotifyLink }}" target="_blank">
-                                <img width="50px" src="{{ asset('assets/images/spotify_picto.png') }}">
-                            </a>
-                        </div>
+                            <div class="img-logo">
+                                <a href="{{ track.spotifyLink }}" target="_blank">
+                                    <img width="50px" src="{{ asset('assets/images/spotify_picto.png') }}">
+                                </a>
+                            </div>
                             {% endif %}
 
                             {% if track.appleMusicLink is not empty %}
                                 <div class="img-logo">
                                     <a href="{{ track.appleMusicLink }}" target="_blank">
-                                        <img width="65px" src="{{ asset('assets/images/appleMusic_picto.png') }}">
+                                        <img width="65px" src="{{ asset('assets/images/appleMusic_picto.png') }}" alt="logo apple music">
                                     </a>
                                 </div>
                             {% endif %}
 
-                            {% if track.appleMusicLink is not empty %}
+                            {% if track.youtubeLink is not empty %}
                                 <div class="img-logo">
                                     <a href="{{ track.youtubeLink }}" target="_blank">
-                                        <img width="50px" src="{{ asset('assets/images/youtube_picto.png') }}">
+                                        <img width="50px" src="{{ asset('assets/images/youtube_picto.png') }}" alt="logo apple music">
                                     </a>
                                 </div>
                             {% endif %}

@@ -23,11 +23,15 @@ class AdminTrackController extends AbstractController
 
         $track = new Track();
 
+        //dd($track);
+
         $adminTrackForm = $this ->createForm(AdminTrackType::class, $track);
 
         $adminTrackForm->handleRequest($request);
 
         if($adminTrackForm->isSubmitted() && $adminTrackForm->isValid()){
+
+            //dd($adminTrackForm->getData());
 
             $trackImage = $adminTrackForm->get('image')->getData();
 
@@ -45,6 +49,8 @@ class AdminTrackController extends AbstractController
 
                 $imageNewFilename = $uniqueFilenameGenerator->generateUniqueFilename($imageOriginalName, $imageExtension);
 
+                //dd($imageNewFilename);
+
                 // je récupère grâce à la classe ParameterBag, le chemin vers la racine du projet
                 $rootDir = $parameterBag->get('kernel.project_dir');
 
@@ -57,10 +63,17 @@ class AdminTrackController extends AbstractController
 
                 // je stocke dans l'entité le nouveau nom de l'image
                 $track->setImage($imageNewFilename);
+
+                //dd($track);
             }
 
             $entityManager->persist($track);
             $entityManager->flush();
+
+                //---------------REQUÊTE SQL GÉNÉRÉE--------------
+            //INSERT INTO track (title, description, release_at, style, artiste_id, created_at, updated_at,
+            // spotify_link, apple_music_link, youtube_link, image)
+            //VALUES ('titre de la track', 'description de la track', ETC ...
 
             $this->addFlash('success', 'Track créée avec succès');
 
@@ -76,6 +89,13 @@ class AdminTrackController extends AbstractController
     public function listTracks(TrackRepository $trackRepository){
 
         $tracks = $trackRepository->findAll();
+
+        //dd($tracks);
+
+            //---------------REQUÊTE SQL GÉNÉRÉE--------------
+        //SELECT id, title, description, image, artiste_id, released_at, created_at,updated_at
+        //FROM track
+
         return $this->render('admin/track/list_tracks.html.twig', [
             'tracks' => $tracks
         ]);
@@ -85,6 +105,13 @@ class AdminTrackController extends AbstractController
     public function showTrack(int $id, TrackRepository $trackRepository) {
 
         $track = $trackRepository->find($id);
+
+        //dd($track);
+
+            //---------------REQUÊTE SQL GÉNÉRÉE--------------
+        //SELECT *
+        //FROM track
+        //WHERE id = 5
 
         return $this->render('admin/track/show_track.html.twig', [
             'track' => $track
@@ -96,8 +123,14 @@ class AdminTrackController extends AbstractController
 
         $track = $trackRepository->find($id);
 
+        //dd($track);
+
         $entityManager->remove($track);
         $entityManager->flush();
+
+            //---------------REQUÊTE SQL GÉNÉRÉE--------------
+        //DELETE FROM track
+        //WHERE id= 32
 
         $this->addFlash('success', 'La track a bien été supprimée');
 
@@ -106,20 +139,24 @@ class AdminTrackController extends AbstractController
 
 
     #[Route('/admin/track/{id}/update', 'admin_update_track', requirements: ['id' => '\d+'] , methods: ['GET', 'POST'])]
-    public function updateStyle(int $id, ParameterBagInterface $parameterBag,UniqueFilenameGenerator
-    $uniqueFilenameGenerator,
-TrackRepository
-    $trackRepository, Request $request,
-EntityManagerInterface
-                                    $entityManager){
+    public function updateStyle(int $id,
+                                ParameterBagInterface $parameterBag,
+                                UniqueFilenameGenerator $uniqueFilenameGenerator,
+                                TrackRepository $trackRepository,
+                                Request $request,
+                                EntityManagerInterface $entityManager){
 
         $track = $trackRepository->find($id);
+
+        //dd($track);
 
         $adminTrackForm = $this->createForm(AdminTrackType::class, $track);
 
         $adminTrackForm->handleRequest($request);
 
         if($adminTrackForm->isSubmitted() && $adminTrackForm->isValid()){
+
+            //dd($adminTrackForm->getData());
 
             $trackImage = $adminTrackForm->get('image')->getData();
 
@@ -136,11 +173,18 @@ EntityManagerInterface
 
                 $track->setImage($imageNewFilename);
                 $track->setUpdatedAt(new \DateTimeImmutable('now'));
+
+                //dd($track);
             }
 
             $track->setUpdatedAt(new \DateTimeImmutable('now'));
             $entityManager->persist($track);
             $entityManager->flush();
+
+                //---------------REQUÊTE SQL GÉNÉRÉE--------------
+            //UPDATE track
+            //SET title = 'nouveau titre', description = 'nouvelle description', ETC...
+            //WHERE id = 12
 
             $this->addFlash('success', 'Track modifiée');
         }

@@ -32,6 +32,13 @@ class AdminUserController extends AbstractController
 
         $admins = $userRepository->findAll();
 
+        //dd($admins);
+
+            //---------------REQUÊTE SQL GÉNÉRÉE--------------
+        //SELECT *
+        //FROM user
+
+
         return $this->render('admin/user/list_users.html.twig', [
             'admins' => $admins,
         ]);
@@ -47,6 +54,8 @@ class AdminUserController extends AbstractController
         //je créé un instance de la classe User
         $user = new User();
 
+        //dd($user);
+
         //j'utilise la méthode "createForm" pour récupérer un formulaire créér en terminal de commande avec la commande "make:form"
         $userForm = $this->createForm(UsersType::class, $user);
         //j'utilise la méthode handleRequest pour récupérer la requête HTTP  de mon formulaire
@@ -54,6 +63,8 @@ class AdminUserController extends AbstractController
 
         //si le fomulaire est soumis et valide
         if ($userForm->isSubmitted() && $userForm->isValid()) {
+
+            //dd($userForm->getData());
 
             //je récupère le mdp entré lors de la création d'utilisateur
             $password = $userForm->get('password')->getData();
@@ -67,6 +78,10 @@ class AdminUserController extends AbstractController
             //je pré-sauvegarde et exécute la création de l'user en BDD
             $entityManager->persist($user);
             $entityManager->flush();
+
+                //---------------REQUÊTE SQL GÉNÉRÉE--------------
+            //INSERT INTO user (email, roles, password)
+            //VALUES 'nom de l'email', 'nom du role', 'le mdp choisi'
 
             $this->addFlash('success', 'User créé !!');
         }
@@ -85,15 +100,28 @@ class AdminUserController extends AbstractController
 
 
         $user= $userRepository->find($id);
+
+        //dd($user);
+
         $authenticatedUser = $this->getUser();
 
+        //dd($authenticatedUser);
+
         if($id === $authenticatedUser->getId()){
+
+            //dd($authenticatedUser->getId());
+
             $this->addFlash('error', "Vous ne pouvez pas supprimé l'utilisateur connecté");
 
             return $this->redirectToRoute('admin_list_users');
         }
 
+        $entityManager->remove($user);
+        $entityManager->flush();
 
+            //---------------REQUÊTE SQL GÉNÉRÉE--------------
+        //DELETE FROM user
+        //WHERE id = 3
 
         $this->addFlash('success', 'Utilisateur bien supprimé');
 
@@ -119,6 +147,8 @@ class AdminUserController extends AbstractController
 
         if ($adminUserForm->isSubmitted() && $adminUserForm->isValid()) {
 
+            //dd($adminUserForm->getData());
+
             $clearNewpassword = $adminUserForm->get('password')->getData();
 
             if($clearNewpassword){
@@ -130,6 +160,10 @@ class AdminUserController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
+                //---------------REQUÊTE SQL GÉNÉRÉE--------------
+            //UPDATE user
+            //SET email = 'nouvel email', role = 'nouveau role', ETC...
+            //WHERE id = 4
             $this->addFlash('success', 'User créé !!');
 
             //return $this->redirectToRoute('admin_create_user');
