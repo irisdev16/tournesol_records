@@ -13,6 +13,8 @@ class HomeController extends AbstractController
 
         $tracks = $trackRepository->findAll();
 
+        //dd($tracks);
+
         return $this->render('public/homepage.html.twig', [
             'tracks' => $tracks,
         ]);

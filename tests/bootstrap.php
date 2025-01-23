@@ -1,5 +1,7 @@
 <?php
 
+//Fichier qui prépare tout ce qu'il faut pour lancer l'application ou les tests.
+
 use Symfony\Component\Dotenv\Dotenv;
 
 require dirname(__DIR__).'/vendor/autoload.php';

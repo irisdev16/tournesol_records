@@ -1,13 +1,10 @@
 {% extends "public/base.html.twig" %}
-
-
 {% block title %}Accueil | Tournesol Records{% endblock %}
 
 {% block body %}
-
     <main>
-
         {# INTRODUCTION #}
+
         <section class="section80">
             <h1 class="titreH1">TOURNESOL RECORDS</h1>
             <p class="intro">Tournesol est un label de musique lo-fi qui met en lumière des artistes passionnés par les mélodies apaisantes et les rythmes délicats. À travers des productions authentiques et chaleureuses, le label cherche à offrir une expérience sonore immersive, parfaite pour accompagner des moments de relaxation et de créativité. Avec un regard tourné vers l’harmonie et la simplicité, Tournesol cultive une ambiance musicale douce et ensoleillée.</p>
@@ -20,27 +17,25 @@
 
         <section class="aperçu-artiste">
             <div class="flex">
-                <img class="imgArtiste" src="{{ asset('assets/images/LucidKeys.png') }}">
-               <div class="text-container">
-                   <p class="pArtiste">
+                <img class="imgArtiste" src="{{ asset('assets/images/LucidKeys.png') }}" alt="image Lucid Keys">
+                <div class="text-container">
+                    <p class="pArtiste">
                        <a style="font-size: 28px"><strong>Lucid Keys </strong></a>est un artiste et producteur de musique lo-fi, reconnu pour ses mélodies apaisantes et ses beats instrumentaux enveloppants. Inspiré par des éléments de jazz, de hip-hop et de musique électronique, Lucid Keys crée des atmosphères introspectives parfaites pour la détente ou la concentration. Ses compositions, souvent caractérisées par des boucles subtiles et des textures sonores riches, captivent les auditeurs avec une douceur et une profondeur qui invitent à la rêverie. Présent sur des plateformes comme SoundCloud et Spotify, il a su créer une communauté fidèle de fans, en quête de sons relaxants et de voyages auditifs uniques. Son style distinctif et sa capacité à fusionner des influences diverses font de lui une figure montante dans le monde du lo-fi.
-                   </p>
-               </div>
+                    </p>
+                </div>
             </div>
 
             <div class="flex2">
                 <div class="text-container-reverse">
                     <p class="pArtiste2">
-
                         <a style="font-size: 28px"><strong>Lost in Reveries</strong></a> est un artiste et producteur de musique lo-fi, célèbre pour ses atmosphères oniriques et ses mélodies introspectives. Puisant son inspiration dans des genres variés comme le jazz, le chillwave et l'électronique, Lost in Reveries crée des compositions qui transportent les auditeurs dans un état de relaxation profonde. Ses morceaux, souvent caractérisés par des boucles hypnotiques et des textures apaisantes, sont parfaits pour la concentration ou la détente. Présent sur des plateformes telles que SoundCloud et Spotify, il a su bâtir une communauté fidèle, attirée par ses ambiances enveloppantes et ses paysages sonores uniques.
                     </p>
                 </div>
-                <img style ="height: 600px; width: 750px" class="imgArtiste2" src="{{ asset('assets/images/LostinReveries.png') }}">
+                <img style ="height: 600px; width: 750px" class="imgArtiste2" src="{{ asset('assets/images/LostinReveries.png') }}" alt="image Lost in Reveries">
             </div>
         </section>
 
         {# APERÇU DES RELEASES #}
-
 
         <h2>Aperçu des releases</h2>
 
@@ -66,6 +61,7 @@
                     </div>
                 {% endfor %}
             </div>
+
             <!-- Boutons de navigation -->
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" >
                 <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: black;"></span>
@@ -76,9 +72,5 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-
     </main>
-
-
-
 {% endblock %}

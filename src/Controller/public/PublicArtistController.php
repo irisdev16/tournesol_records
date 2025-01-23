@@ -16,6 +16,12 @@ class PublicArtistController extends AbstractController
 
         $artists = $artisteRepository->findAll();
 
+        //dd($artists);
+
+            //---------------REQUÊTE SQL GÉNÉRÉE--------------
+        //SELECT (alias, description, image)
+        //FROM artiste
+
         return $this->render('public/artist/list_artists.html.twig', [
             'artists' => $artists
         ]);
@@ -26,10 +32,17 @@ class PublicArtistController extends AbstractController
 
         $artist = $artisteRepository->find($id);
 
+        //dd($artist);
+
         if(!$artist){
             $notFoundArtist = new Response('Artiste non trouvé !', 404);
             return $notFoundArtist;
         }
+
+            //---------------REQUÊTE SQL GÉNÉRÉE--------------
+        //SELECT alias, description, image
+        //FROM artiste
+        //WHERE id = 13
 
         return $this->render('public/artist/show_artist.html.twig', [
             'artist' => $artist
@@ -41,7 +54,16 @@ class PublicArtistController extends AbstractController
 
         $search = $request->query->get('search');
 
+        //dd($search);
+
         $artist = $artisteRepository ->findBySearchInTitle($search);
+
+        //dd($artist);
+
+            //---------------REQUÊTE SQL GÉNÉRÉE--------------
+        //SELECT alias, image
+        //FROM artiste
+        //WHERE alias LIKE:search
 
         return $this->render('public/artist/search_artists.html.twig', [
             'artists' => $artist,

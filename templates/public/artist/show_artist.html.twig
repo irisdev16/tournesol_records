@@ -1,25 +1,23 @@
 {% extends "public/base.html.twig" %}
-
 {% block title %}{{ artist.alias }} | Tournesol Records{% endblock %}
 
 {% block body %}
 
     <main>
-
         {# PHOTO + TEXTE #}
+
         <article class="show-artiste">
             <div class="show-artist-text">
                 <h3>{{ artist.alias }}</h3><br>
                 <p>{{ artist.description }}</p>
             </div>
-
             <div class="show-artist-img">
-                <img width="500px"  src="{{ asset('assets/uploads/' ~ artist.image) }}" />
+                <img width="500px"  src="{{ asset('assets/uploads/' ~ artist.image) }}" alt="image artiste" />
             </div>
-
         </article>
 
         {# PARTIE TRACKS DE L'ARTISTE #}
+
         <h2>Tracks de {{ artist.alias }}</h2>
 
         <section class="article-container">
@@ -28,38 +26,36 @@
                     <h4>{{ track.title }} </h4><br>
                     <p id="releaseSize"><em>{{ track.releasedAt |date('d-m-Y')}}</em></p>
                     <div class="show-artist-img">
-                        <img width="500px" src="{{ asset('assets/uploads/' ~ track.image) }}" />
+                        <img width="500px" src="{{ asset('assets/uploads/' ~ track.image) }}" alt="image track" />
                     </div>
                     <div style="margin-top: 10%; margin-bottom: 10%">
                         <a href="{{ path('show_track', {id: track.id}) }}" style="background-color: darkred;border-radius: 15px;color: white; padding: 3%">Voir plus</a>
                     </div>
-
-
 
                     <p>Écouter sur :
                         <div class="flex">
                             {% if track.spotifyLink is not empty %}
                             <div class="img-logo">
                                 <a href="{{ track.spotifyLink }}" target="_blank">
-                                    <img width="50px" src="{{ asset('assets/images/spotify_picto.png') }}">
+                                    <img width="50px" src="{{ asset('assets/images/spotify_picto.png') }}" alt="pictogramme spotify">
                                 </a>
                             </div>
                             {% endif %}
 
                             {% if track.appleMusicLink is not empty %}
-                                <div class="img-logo">
-                                    <a href="{{ track.appleMusicLink }}" target="_blank">
-                                        <img width="65px" src="{{ asset('assets/images/appleMusic_picto.png') }}" alt="logo apple music">
-                                    </a>
-                                </div>
+                            <div class="img-logo">
+                                <a href="{{ track.appleMusicLink }}" target="_blank">
+                                    <img width="65px" src="{{ asset('assets/images/appleMusic_picto.png') }}" alt="pictogramme apple music">
+                                </a>
+                            </div>
                             {% endif %}
 
                             {% if track.youtubeLink is not empty %}
-                                <div class="img-logo">
-                                    <a href="{{ track.youtubeLink }}" target="_blank">
-                                        <img width="50px" src="{{ asset('assets/images/youtube_picto.png') }}" alt="logo apple music">
-                                    </a>
-                                </div>
+                            <div class="img-logo">
+                                <a href="{{ track.youtubeLink }}" target="_blank">
+                                    <img width="50px" src="{{ asset('assets/images/youtube_picto.png') }}" alt="pictogramme apple music">
+                                </a>
+                            </div>
                             {% endif %}
                         </div>
                     </p>

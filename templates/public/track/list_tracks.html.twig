@@ -1,24 +1,18 @@
 {% extends "public/base.html.twig" %}
-
-
 {% block title %}Accueil | Les artistes {% endblock %}
 
 {% block body %}
-
     <main>
 
         {# FORMULAIRE : BARRE DE RECHERCHES #}
 
-
         <form class="form-search" method="get" action="{{ path('search_tracks') }}">
-
             <label>
                 <input required class="search-input" type="text" name="search" >
             </label>
 
-            <input class="search-button" type="submit" value="Rechercher une track">
+                <input class="search-button" type="submit" value="Rechercher une track">
         </form>
-
 
         {# BOUCLE POUR AFFICHER LISTE DE TRACKS #}
 
@@ -30,14 +24,13 @@
                     <div>
                         <div class="flex-img-title-text" >
                             <div class="mt-5">
-                                <img src="{{ asset('assets/uploads/' ~ track.image) }}"  />
+                                <img alt="image track" src="{{ asset('assets/uploads/' ~ track.image) }}" />
                             </div>
 
                            <div id="text-tracks">
                                <h3>{{ track.title }}</h3><br>
                                <p  style="text-align: justify">{{ track.description }}</p>
                            </div>
-
                         </div>
 
 
@@ -49,7 +42,7 @@
                                 {% if track.spotifyLink is not empty %}
                                     <div class="img-logo">
                                         <a href="{{ track.spotifyLink }}" target="_blank">
-                                            <img width="50px" src="{{ asset('assets/images/spotify_picto.png') }}">
+                                            <img width="50px" src="{{ asset('assets/images/spotify_picto.png') }}" alt="pictogramme spotify">
                                         </a>
                                     </div>
                                 {% endif %}
@@ -57,7 +50,7 @@
                                 {% if track.appleMusicLink is not empty %}
                                     <div class="img-logo">
                                         <a href="{{ track.appleMusicLink }}" target="_blank">
-                                            <img width="65px" src="{{ asset('assets/images/appleMusic_picto.png') }}">
+                                            <img width="65px" src="{{ asset('assets/images/appleMusic_picto.png') }}" alt="pictogramme Apple Music">
                                         </a>
                                     </div>
                                 {% endif %}
@@ -65,7 +58,7 @@
                                 {% if track.appleMusicLink is not empty %}
                                     <div class="img-logo">
                                         <a href="{{ track.youtubeLink }}" target="_blank">
-                                            <img width="50px" src="{{ asset('assets/images/youtube_picto.png') }}">
+                                            <img width="50px" src="{{ asset('assets/images/youtube_picto.png') }}" alt="pictogramme youtube">
                                         </a>
                                     </div>
                                 {% endif %}
@@ -74,11 +67,6 @@
                     </div>
                 </article>
             {% endfor %}
-
-
         </section>
-
-
     </main>
-
 {% endblock %}

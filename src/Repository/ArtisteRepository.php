@@ -20,6 +20,8 @@ class ArtisteRepository extends ServiceEntityRepository
 
         $queryBuilder = $this->createQueryBuilder('artist');
 
+        //dd($queryBuilder);
+
         $query = $queryBuilder -> select('artist')
             ->where('artist.alias LIKE :search')
             ->setParameter('search', '%'.$search.'%')

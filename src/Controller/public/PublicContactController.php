@@ -19,14 +19,19 @@ class PublicContactController extends AbstractController
 
         // création d'une instance de classe Contact
     $contact = new Contact();
-    //méthode createFormr génère un formulaire basé sur le type de formulaire PublicContactType, lui basé sur
-        // l'entité Contact
+
+    //dd($contact);
+
+    //méthode createForrm génère un formulaire basé sur le type de formulaire PublicContactType, lui basé sur l'entité Contact
     $form = $this->createForm(PublicContactType::class, $contact);
+
     //méthode qui récupère les données de la requête HTTP
     $form->handleRequest($request);
 
     //si formulaire soumis et valide
     if($form->isSubmitted() && $form->isValid()){
+
+        //dd($form->getData());
 
         //alors une instance de classe de l'entité email est créé
         $email = new Email();
@@ -50,6 +55,8 @@ class PublicContactController extends AbstractController
             //mise en forme du mail via le template twig fournit précédemment
                 ->html($emailTemplate)
         );
+
+        //dd($mailer);
 
         $this->addFlash('success', 'Message bien envoyé !');
         return $this->redirectToRoute('contact');

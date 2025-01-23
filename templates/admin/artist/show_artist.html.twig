@@ -1,16 +1,15 @@
 {% extends 'admin/base.html.twig' %}
-
-
-
 {% block body %}
 
     <section class="container my-5">
         <div class="d-flex justify-content-center">
             <div class="row align-items-center w-75">
+
                 <!-- Colonne de l'image -->
                 <div class="col-md-4 text-center">
                     <img class="img-fluid" alt="image artiste" src="{{ asset('assets/uploads/' ~ artist.image) }}" />
                 </div>
+
                 <!-- Colonne des informations -->
                 <div class="col-md-8">
                     <p><strong>artist_id :</strong> {{ artist.id }}</p>
@@ -26,8 +25,4 @@
             </div>
         </div>
     </section>
-
-
-
-
 {% endblock body %}

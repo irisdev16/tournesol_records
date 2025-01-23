@@ -1,8 +1,7 @@
 {% extends 'admin/base.html.twig' %}
-
 {% block body %}
-
     <div class="container mt-5">
+
         <h1 style="text-align: center; margin-bottom: 5%">Liste de toutes les tracks</h1>
 
         <div class="d-flex justify-content-center">
@@ -18,11 +17,6 @@
                     <th style="border: 1px solid black; padding: 8px;">Date de release</th>
                     <th style="border: 1px solid black; padding: 8px;">Date de création</th>
                     <th style="border: 1px solid black; padding: 8px;">Date de mise à jour</th>
-
-
-
-
-
                 </tr>
 
                 {% for track in tracks %}
@@ -32,7 +26,6 @@
                             <a href="{{ path('admin_delete_track', {'id': track.id}) }}" class="btn btn-danger" style="margin-bottom: 10px"  >Supprimer</a>
                             <a href="{{ path('admin_update_track', {'id': track.id}) }}" class="btn btn-warning" >Modifier</a>
                         </td>
-
                         <td style="border: 1px solid black; padding: 8px;">{{ track.id }}</td>
                         <td style="border: 1px solid black; padding: 8px;">{{ track.title }}</td>
                         <td style="border: 1px solid black; padding: 8px;">{{ track.description }}</td>
@@ -52,10 +45,6 @@
                         <td style="border: 1px solid black; padding: 8px;">{{ track.releasedAt | date('d-m-Y')}}</td>
                         <td style="border: 1px solid black; padding: 8px;">{{ track.createdAt | date('d-m-Y')}}</td>
                         <td style="border: 1px solid black; padding: 8px;">{{ track.updatedAt | date('d-m-Y')}}</td>
-
-
-
-
                     </tr>
                 {% endfor %}
             </table>

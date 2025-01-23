@@ -17,6 +17,12 @@ class PublicTrackController extends AbstractController
 
         $tracks = $trackRepository->findAll();
 
+        //dd($tracks);
+
+            //---------------REQUÊTE SQL GÉNÉRÉE--------------
+        //SELECT title, description, image
+        //FROM track
+
         return $this->render('public/track/list_tracks.html.twig', [
             'tracks' => $tracks
         ]);
@@ -27,12 +33,18 @@ class PublicTrackController extends AbstractController
 
         $track = $trackRepository->find($id);
 
-
+        //dd($track);
 
         if(!$track){
             $notFoundTrack = new Response('Track non trouvée', 404);
             return $notFoundTrack;
         }
+
+            //---------------REQUÊTE SQL GÉNÉRÉE--------------
+        //SELECT title, artiste_id, description
+        //FROM track
+        //WHERE id=4
+
 
         return $this->render('public/track/show_track.html.twig', [
             'track' => $track,
@@ -45,7 +57,16 @@ class PublicTrackController extends AbstractController
 
         $search = $request->query->get('search');
 
+        //dd($search);
+
         $track = $trackRepository->findBySearchInTitle($search);
+
+        //dd($track);
+
+            //---------------REQUÊTE SQL GÉNÉRÉE--------------
+        //SELECT title, image, description, spotify_link, apple_music_link, youtube_link
+        //FROM track
+        //WHERE title LIKE :search
 
         return $this->render('public/track/search_tracks.html.twig', [
             'tracks' => $track,

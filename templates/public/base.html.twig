@@ -16,18 +16,15 @@
     <!-- Lien CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/style.css') }} ">
 </head>
-
     <body>
-
         <header>
-
             <nav>
+                {# Menu Hamburger Responsive #}
                 <ul id="hamb">
                     <li></li>
                     <li></li>
                     <li></li>
                 </ul>
-
 
                 <ul class="navbar" id="navbar">
                     <li id="img">
@@ -47,6 +44,8 @@
             {% endblock %}
         </header>
 
+        {# ADD FLASH SUCCES ET ERROR #}
+
         {% for message in app.flashes('success') %}
             <section>
                 <p style="background-color: green; color: white">{{ message }}</p>
@@ -60,9 +59,10 @@
         {% endfor %}
 
 
-            {% block body %}
 
-            {% endblock %}
+        {% block body %}
+        {% endblock %}
+
 
 
         <footer>
@@ -79,22 +79,22 @@
                     <li><a href="{{ path('contact') }}">Contact</a></li>
 
 
-                   {# <li><a>Listen on</a>
-                        <ul class="navbarPicto">
-                            <li><img class="picto"  src="{{ asset('assets/images/youtube_picto.png')}}" style="width: 35px"></li>
-                            <li><img class="picto"  src="{{ asset('assets/images/instagram_picto.png')}}"></li>
-                            <li><img class="picto"  src="{{ asset('assets/images/soundcloud_picto.png')}}"></li>
-                            <li><img class="picto"  src="{{ asset('assets/images/spotify_picto.png')}}" style="width: 35px"></li>
-                        </ul>
-                    </li>
-                   #}
+                    {# A AJOUTER À L'AVENIR : PARTIE RÉSEAUX SOCIAUX DU LABEL#}
+                    {# <li><a>Listen on</a>
+                            <ul class="navbarPicto">
+                                <li><img class="picto"  src="{{ asset('assets/images/youtube_picto.png')}}" style="width: 35px"></li>
+                                <li><img class="picto"  src="{{ asset('assets/images/instagram_picto.png')}}"></li>
+                                <li><img class="picto"  src="{{ asset('assets/images/soundcloud_picto.png')}}"></li>
+                                <li><img class="picto"  src="{{ asset('assets/images/spotify_picto.png')}}" style="width: 35px"></li>
+                            </ul>
+                        </li>
+                    #}
                 </ul>
             </nav>
         </footer>
 
     <!-- Lien JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
 
     </body>
 </html>
