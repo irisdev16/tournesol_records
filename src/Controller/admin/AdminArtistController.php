@@ -126,14 +126,21 @@ class AdminArtistController extends AbstractController
     //je créé une route associée a la méthode ci dessous,c'est cette url qui s'affichera dans le navigateur
     //requirements est écrit sous forme d'expression régulière : id spécifique qui doit être un chiffre
     #[Route('admin/artist/{id}/delete', 'admin_delete_artist', requirements: ['id' => '\d+'])]
-    //je créé la fonction de suppression d'artiste avec en paramètre l'id de l'artiste, le repository, et l'entity Manager
-    public function deleteArtist(int $id, ArtisteRepository $artisteRepository, EntityManagerInterface $entityManager){
-
-
+    //je créé la fonction de suppression d'artiste
+    public function deleteArtist(int $id, ArtisteRepository $artisteRepository,EntityManagerInterface $entityManager)
+    {
 
         // j'interroge le repository (issu de Doctrine), donc la BDD pour récupérer l'artiste avec l'id qui lui ai
         // associé
         $artist = $artisteRepository->find($id);
+
+        //si l'artiste avec l'id associé n'existe pas, je renvoie un messge d'erreur et je redirige vers la liste
+        // d'artiste
+        if (!$artist) {
+            $this->addFlash('error', "Cet artiste n'existe pas.");
+            return $this->redirectToRoute('admin_list_artists');
+
+        }
 
         //dd($artist);
 
@@ -141,11 +148,6 @@ class AdminArtistController extends AbstractController
         $entityManager->remove($artist);
         //j'exécute le remove et j'en envoie ça en BDD
         $entityManager->flush();
-
-            //---------------REQUÊTE SQL GÉNÉRÉE--------------
-        //DELETE FROM artiste
-        //WHERE id = 1 (par exemple, id = id passé dans l'URL)
-
 
         //j'utilise la méthode addFlash issu de la classe AbstractController pour afficher un message de validation
         $this->addFlash('success', "L'artiste a bien été supprimé");
@@ -196,13 +198,18 @@ class AdminArtistController extends AbstractController
             $entityManager->persist($artist);
             $entityManager->flush();
 
+
+
                 //---------------REQUÊTE SQL GÉNÉRÉE--------------
             //UPDATE artiste
             //SET name = 'nouveau nom', alias = 'nouvel alias', ETC ETC
             //WHERE id = 1 (par exemple, id = id passé dans l'URL)
 
             $this->addFlash('success', 'Artiste modifié');
+
+            return $this->redirectToRoute('admin_list_artists');
         }
+
 
         $adminArtistFormView = $adminArtistForm->createView();
 
