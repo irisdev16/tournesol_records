@@ -325,7 +325,7 @@ h3{
     background-color: #fea756;
     width: calc(25% - 30px);
     height: auto;
-    margin-bottom: 5%;
+    margin-bottom: 15%;
     padding: 10px;
     box-sizing: border-box;
 
@@ -408,8 +408,8 @@ a img {
     padding: 15px;
     text-align: justify;
     background-color:#fea756 ;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 10%;
+    margin-bottom: 10%;
 }
 #alias-sous-titre{
     text-align: center;
