@@ -28,7 +28,7 @@ class Track
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $releasedAt = null;
 
-    #[ORM\ManyToMany(targetEntity: Style::class)]
+    #[ORM\ManyToMany(targetEntity: Style::class, inversedBy: 'track')]
     #[ORM\JoinTable('track_style')]
     private Collection $style;
 

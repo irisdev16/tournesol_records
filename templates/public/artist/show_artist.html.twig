@@ -12,7 +12,7 @@
                 <p>{{ artist.description }}</p>
             </div>
             <div class="show-artist-img">
-                <img width="500px"  src="{{ asset('assets/uploads/' ~ artist.image) }}" alt="image artiste" />
+                <img width="500px"  src="{{ asset('assets/uploads/' ~ artist.image) }}" alt="{{ artist.alias }}" />
             </div>
         </article>
 
@@ -26,7 +26,7 @@
                     <h4>{{ track.title }} </h4><br>
                     <p id="releaseSize"><em>{{ track.releasedAt |date('d-m-Y')}}</em></p>
                     <div class="show-artist-img">
-                        <img width="500px" src="{{ asset('assets/uploads/' ~ track.image) }}" alt="image track" />
+                        <img width="500px" src="{{ asset('assets/uploads/' ~ track.image) }}" alt="{{ track.title }}" />
                     </div>
                     <div style="margin-top: 10%; margin-bottom: 10%">
                         <a href="{{ path('show_track', {id: track.id}) }}" style="background-color: darkred;border-radius: 15px;color: white; padding: 3%">Voir plus</a>

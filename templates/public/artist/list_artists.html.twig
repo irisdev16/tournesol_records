@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="artist-img">
-                    <img src="{{ asset('assets/uploads/' ~ artist.image) }}" alt="image artiste" />
+                    <img src="{{ asset('assets/uploads/' ~ artist.image) }}" alt="{{ artist.alias }}" />
                 </div>
             </article>
         {% endfor %}

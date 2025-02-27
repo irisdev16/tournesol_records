@@ -40,7 +40,7 @@ class AdminArtistController extends AbstractController
 
             }
 
-            if($artistImage){
+            if ($artistImage){
 
                 $imageOriginalName = $artistImage->getClientOriginalName();
                 $imageExtension = $artistImage->guessExtension();

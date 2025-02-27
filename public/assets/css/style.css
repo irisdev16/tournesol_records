@@ -512,7 +512,7 @@ a img {
         padding: 15px;
         width: 100%;
         background-color: #fea756;
-        position: relative;
+        /*position: relative;*/
         overflow: visible;
     }
 
@@ -562,7 +562,7 @@ a img {
     .titreH1{
         text-align: center;
         color: #fea756 ;
-        font-size: 80px;
+        font-size: 40px;
         margin-top: 5%;
     }
 
@@ -577,29 +577,50 @@ a img {
     /*Image + Paragraphe*/
     /*1er ARTISTE*/
 
+    /*.flex{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+    margin-top: 5%;
+}
+.text-container {
+    position: absolute;
+    top: 10%;
+    left: 35%;
+    width: 60%;
+    background-color: #fea756;
+    padding: 35px;
+    height: auto;
+}
+.imgArtiste{
+    width: auto;
+    max-width: 750px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.pArtiste{
+    font-size: 22px;
+    text-align: justify;
+}*/
+
     .aperçu-artiste{
-        margin-bottom: 5%;
+        margin-bottom: 100%;
     }
-    .flex{
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
-        position: relative;
-        margin-top: 5%;
-    }
+.flex{
+    margin-bottom: 40%;
+}
     .text-container {
-        position: absolute;
-        top: 2%;
-        left: 40%;
-        width: 60%;
-        background-color: #fea756;
+        width: 70%;
+        top: 70%;
+        left: 20%;
         padding: 10px;
         height: auto;
         border-radius: 10px;
     }
     .imgArtiste{
         width: auto;
-        max-width: 400px;
+        max-width: 300px;
 
     }
     .pArtiste{
@@ -609,43 +630,37 @@ a img {
     /*2ème ARTISTE*/
 
     .flex2{
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
-        position: relative;
-        margin-top: 5%;
+        margin-bottom: 40%;
+        margin-top: 75%;
     }
 
     .text-container-reverse{
-
-        width: 60%;
         position: absolute;
-        top: 15%;
-        left: 3%;
+        width: 70%;
+        left: 10%;
+        top: 80%;
         height: auto;
-        z-index: 2;
     }
 
     .pArtiste2 {
-        background-color: #fea756;
-        text-align: justify;
-        padding: 15px;
         font-size: 10px;
-        margin: 0;
+        text-align: justify;
         border-radius: 10px;
+        padding: 10px;
 
     }
-
     .imgArtiste2{
         z-index: 0;
-        margin-left: 10%;
-        width:auto;
-        max-width: 400px;
-        height: auto;
-        max-height: 350px;
+        max-width: 300px;
+        max-height: 250px;
+        margin-right: 5%;
+        margin-top: 30%;
     }
 
+
     /*APERÇU DES RELEASES*/
+
+
 
     .text-muted{
         font-size: 10px;

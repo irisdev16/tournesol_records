@@ -26,7 +26,7 @@
             <article class="search-track">
                 <p class="titre-track">{{ track.title }}</p>
                 <div class="img-track">
-                    <img src="{{ asset('assets/uploads/' ~ track.image) }}" alt="image track"/>
+                    <img src="{{ asset('assets/uploads/' ~ track.image) }}" alt="{{ track.title }}"/>
                 </div>
                 <p class="text-track">{{ track.description }}</p>
 

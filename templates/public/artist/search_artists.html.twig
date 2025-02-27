@@ -22,7 +22,7 @@
                 <article style="background-color: #fea756; padding: 2.5%;margin-bottom: 5%" >
                     <p style="font-size: 30px"><strong>{{ artist.alias }}</strong></p>
                     <div style="display: flex; justify-content: center; align-items: center;width: 100%; max-width: 600px; margin: 0 auto;" >
-                        <img src="{{ asset('assets/uploads/' ~ artist.image) }}" alt="image artiste"/>
+                        <img src="{{ asset('assets/uploads/' ~ artist.image) }}" alt="{{ artist.alias }}"/>
                     </div>
                     <div class="mt-5">
                         <a href="{{ path('show_artist', {id: artist.id}) }}" class="img-fluid" alt="{{ artist.alias }}" style="background-color: darkred;color: white;border-radius: 10px;padding: 10px;" >Voir l'artiste </a>
