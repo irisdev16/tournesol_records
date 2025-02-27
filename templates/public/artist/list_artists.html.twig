@@ -15,7 +15,7 @@
 
         {# BOUCLE POUR AFFICHER LISTE D'ARTISTES #}
 
-        <h1 style="margin-top: 3%; text-align: center;color: #fea756; font-size: 60px">ARTISTES</h1>
+        <h1 id="h1artistes" style="text-align: center;color: #fea756; font-size: 60px">ARTISTES</h1>
 
         {% for artist in artists %}
             <article class="all-artiste">
@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="artist-img">
-                    <img src="{{ asset('assets/uploads/' ~ artist.image) }}" alt="{{ artist.alias }}" />
+                    <img id="radius" src="{{ asset('assets/uploads/' ~ artist.image) }}" alt="{{ artist.alias }}" />
                 </div>
             </article>
         {% endfor %}

@@ -9,6 +9,9 @@ img{
     width: 100%;
 }
 
+.logo-responsive{
+    display: none;
+}
 
 a{
     text-decoration: none;
@@ -48,7 +51,35 @@ li{
 
 }
 
+/*RÉSULTAT RECHERHCE ARTISTE*/
 
+.search-artist{
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    margin-top: 3%;
+}
+
+.search-article{
+    background-color: #fea756;
+    padding: 2.5%;
+    margin-bottom: 5%;
+}
+
+.search-article p{
+    font-size: 30px;
+}
+
+.search-artist-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
 /*RÉSULTAT RECHERHCE TRACK*/
 
 .search-track{
@@ -394,12 +425,15 @@ a img {
 
 }
 
-#alias a{
+#alias{
     background-color:  #534e35;
     color: #fea756 ;
     padding: 8px;
     border-radius: 20px;
 
+}
+.bouton-artiste{
+    margin-left: 40%;
 }
 
 /*----------FOOTER---------*/
@@ -495,11 +529,33 @@ a img {
 
 
     }
+    /*RÉSULTAT RECHERCHE ARTISTE*/
 
-    /*RÉSULTAT RECHERHCE TRACK*/
+    .search-artist{
+        width: 90%;
+        height: 30%;
+        margin: auto;
+        min-height: 55vh;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+
+    .search-article{
+        border-radius: 10px;
+        padding: 5%;
+
+    }
+
+    /*RÉSULTAT RECHERCHE TRACK*/
 
     .search-track {
-        width: 70%;
+        width: 90%;
+        border-radius: 10px;
+        padding: 5%;
+    }
+
+    .search-button{
+        margin-top: 5%;
     }
 
 
@@ -552,6 +608,13 @@ a img {
         margin:5px 0;
     }
 
+    .logo-responsive{
+        display: flex;
+        width: 15%;
+        margin-right: auto;
+    }
+
+
     /*INTRODUCTION*/
 
     .section80{
@@ -576,33 +639,6 @@ a img {
     /*APERÇU DES ARTISTES*/
     /*Image + Paragraphe*/
     /*1er ARTISTE*/
-
-    /*.flex{
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    position: relative;
-    margin-top: 5%;
-}
-.text-container {
-    position: absolute;
-    top: 10%;
-    left: 35%;
-    width: 60%;
-    background-color: #fea756;
-    padding: 35px;
-    height: auto;
-}
-.imgArtiste{
-    width: auto;
-    max-width: 750px;
-    border-top-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-.pArtiste{
-    font-size: 22px;
-    text-align: justify;
-}*/
 
     .aperçu-artiste{
         margin-bottom: 100%;
@@ -661,19 +697,18 @@ a img {
     /*APERÇU DES RELEASES*/
 
 
-
     .text-muted{
         font-size: 10px;
+        width: auto;
+        height: 30%;
     }
+
+
 
     /*PAGE TOUTES LES TRACKS*/
 
 
-    .track-container{
-        display: flex;
-        flex-wrap: wrap;
-        margin-top: 5%;
-    }
+
     .flex-img-title-text{
         display: block;
         width: auto;
@@ -688,19 +723,20 @@ a img {
 
     .all-tracks{
         background-color: #fea756;
-        width: 65%;
+        width: 90%;
         height: auto;
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 35px;
+        border-radius: 10px;
 
     }
 
     .all-tracks h3{
         font-size: 20px;
         width: 100%;
-        margin-top: 10%;
+        margin-top: 20%;
     }
 
     .all-tracks p {
@@ -723,22 +759,19 @@ a img {
     .img-logo{
         width: 50px;
         margin: 5%;
-        margin-top: -5%;
 
     }
 
-
     /*PAGE SHOW TRACKS*/
 
+    .bouton-artiste{
+        margin-left: 25%;
+    }
     .show-track{
-        width: 70%;
+        width: 95%;
         height: auto;
-        margin: auto;
-        padding: 15px;
-        text-align: justify;
-        background-color:#fea756 ;
-        margin-top: 5%;
-        margin-bottom: 5%;
+        margin-top: 10%;
+        margin-bottom: 10%;;
     }
     #alias-sous-titre{
         text-align: center;
@@ -754,7 +787,7 @@ a img {
 
     }
 
-    #alias a{
+    #alias{
         background-color:  #534e35;
         color: #fea756 ;
         padding: 8px;
@@ -764,12 +797,15 @@ a img {
 
     /*PAGE TOUS LES ARTISTES*/
 
+    #h1artistes{
+        margin-top: 10%;
+    }
     .all-artiste{
         width: 90%;
         display: flex;
         justify-content: flex-end;
-        margin-bottom: 35%;
-        margin-top: 25%;
+        margin-bottom: 90%;
+        margin-top: 10%;
         margin-left: 8%;
         flex-direction: row-reverse;
         position: relative;
@@ -778,32 +814,26 @@ a img {
     .artist-text{
         background-color:#fea756 ;
         height: auto;
-        width:70%;
+        width:80%;
         padding: 25px;
-        left: 30%;
-        top: 5%;
+        left: 20%;
+        top: 75%;
         position: absolute;
+        font-size: 10px;
+        border-radius: 10px;
+
 
     }
     .artist-img{
         width: 40%;
-
-
+        margin-top: 10%;
+        margin-left: -5%;
     }
 
-    .all-artiste div p{
-        text-align: justify;
-        font-size: 10px;
+    #radius{
+        border-radius: 10px;
     }
 
-    .all-artiste div a{
-        text-decoration: none;
-        background-color: darkred;
-        color: white;
-        border-radius: 20px;
-        padding: 10px;
-        font-size: 10px;
-    }
 
     /*PAGE SHOW ARTISTE*/
 
@@ -811,13 +841,17 @@ a img {
         text-align: center;
     }
 
+    #titre-track{
+        font-size: 28px;
+
+    }
+
     .show-artiste {
         width: 80%;
         margin-left: 2%;
         display: flex;
-        justify-content: flex-end;
-        margin-bottom: 15%;
-        margin-top: 5%;
+        margin-top: 10%;
+        margin-bottom: 75%;
         flex-direction: row-reverse;
         position: relative;
 
@@ -829,14 +863,18 @@ a img {
         width: 85%;
         padding: 15px;
         left: 35%;
-        top: 8%;
+        top: 20%;
         font-size: 10px;
         position: absolute;
+        border-radius: 10px;
 
     }
 
     .show-artist-img{
         width: 40%;
+    }
+    .show-artist-img img{
+        border-radius: 10px;
     }
 
     .show-artiste div p {
@@ -849,11 +887,12 @@ a img {
 
     .show-tracks{
         background-color: #fea756;
-        width: calc(35% - 30px);
+        width: calc(50% - 30px);
         height: auto;
         margin-bottom: 5%;
         padding: 10px;
         box-sizing: border-box;
+        border-radius: 10px;
     }
 
     .article-container{

@@ -5,7 +5,7 @@
     <main>
         {# FORMULAIRE : BARRE DE RECHERCHES #}
 
-        <form class="form-search" method="get" action="{{ path('search_tracks') }}">
+        <form class="form-search" method="get" action="{{ path('search_artists') }}">
             <label>
                 <input required class="search-input" type="text" name="search" >
             </label>
@@ -18,10 +18,10 @@
         {% endif %}
 
         {% for artist in artists %}
-            <div style="display: flex; justify-content: center;align-items: center;  min-height: 100vh; text-align: center; margin-top: 3%">
-                <article style="background-color: #fea756; padding: 2.5%;margin-bottom: 5%" >
-                    <p style="font-size: 30px"><strong>{{ artist.alias }}</strong></p>
-                    <div style="display: flex; justify-content: center; align-items: center;width: 100%; max-width: 600px; margin: 0 auto;" >
+            <div class="search-artist">
+                <article class="search-article">
+                    <p><strong>{{ artist.alias }}</strong></p>
+                    <div class="search-artist-img">
                         <img src="{{ asset('assets/uploads/' ~ artist.image) }}" alt="{{ artist.alias }}"/>
                     </div>
                     <div class="mt-5">

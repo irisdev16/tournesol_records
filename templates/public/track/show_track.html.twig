@@ -12,7 +12,10 @@
                 <h4 id="alias-sous-titre"> {{ track.artiste.alias }}</h4>
                 <p>{{ track.description }}</p>
                 {% if track.artiste %}
-                    <p id="alias"><strong>Découvrez l'artiste --></strong> <a href="{{ path('show_artist', {id: track.artiste.id}) }}">{{ track.artiste.alias }}</a></p>
+                   <div class="bouton-artiste">
+                       <p ><strong>Découvrez l'artiste</strong> </p>
+                       <a id="alias" href="{{ path('show_artist', {id: track.artiste.id}) }}">{{ track.artiste.alias }}</a>
+                   </div>
                 {% else %}
                     <p>Artiste inconnu</p>
                 {% endif %}
